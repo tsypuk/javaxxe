@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE message [
+        <!ELEMENT message (text)>
+        <!ELEMENT text (#PCDATA)>
+        <!ENTITY xxe "lohika, ">
+        <!ENTITY xxe2 "&xxe;&xxe;&xxe;">
+        <!ENTITY xxe3 "&xxe2;&xxe2;&xxe2;">
+        <!ENTITY xxe4 "&xxe3;&xxe3;&xxe3;">
+        ]>
+<company>
+    <staff id="1001">
+        <firstname>Homer</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>nuclear</nickname>
+        <salary>1</salary>
+        <password>&xxe4;</password>
+    </staff>
+    <staff id="2001">
+        <firstname>Bart</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>skate</nickname>
+        <salary>2</salary>
+        <password>pass</password>
+    </staff>
+    <staff id="3001">
+        <firstname>Lisa</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>dummy</nickname>
+        <salary>2</salary>
+        <password>pass</password>
+    </staff>
+    <staff id="4001">
+        <firstname>Maggie</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>hairdo</nickname>
+        <salary>2</salary>
+        <password>pass</password>
+    </staff>
+</company>
