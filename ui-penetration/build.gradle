@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+	testCompile('com.jayway.jsonpath:json-path')
+	testCompile("junit:junit")
+
+	testCompile 'org.testcontainers:selenium:1.4.2'
+//    testCompile 'org.testcontainers:selenium:1.4.1'
+	testCompile 'org.seleniumhq.selenium:selenium-remote-driver:2.45.0'
+	compile 'org.seleniumhq.selenium:selenium-java:3.5.3'
+
+	compile 'org.projectlombok:lombok:1.16.18'
+
+}

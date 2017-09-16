@@ -1,0 +1,17 @@
+# Image to build and test source code of user-service project.
+FROM xxe_jdk8:latest
+
+WORKDIR /home/gradle/service
+
+ADD build.gradle build.gradle
+ADD settings.gradle settings.gradle
+ADD gradle.properties gradle.properties
+COPY src src/
+
+# workaround to change permissions: https://github.com/moby/moby/issues/6119
+USER root
+RUN chown -R gradle:gradle .
+
+USER gradle
+CMD ["build", "--stacktrace"]
+ENTRYPOINT ["gradle"]

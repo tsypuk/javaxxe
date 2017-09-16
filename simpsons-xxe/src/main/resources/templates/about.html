@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+
+  <body>
+    <div th:replace="layout :: navbar">(test)</div>
+
+    <div class="container">
+      <div class="starter-template">
+        <h1>Spring MVC / Thymeleaf / Bootstrap</h1>
+        <p class="lead" th:text="${author}">(greeting)</p>
+      </div>
+    </div>
+    <div class="container text-center">
+
+      <div class="col-sm-7">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+              <p>John</p>
+              <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar"/>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+              <p>Bo</p>
+              <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar"/>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+              <p>Jane</p>
+              <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar"/>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+              <p>Anja</p>
+              <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar"/>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot
+                something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <footer class="container-fluid text-center">
+      <p>XXE Demo</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+version: "3"
+services:
+
+  jdk8:
+    container_name: jdk8
+    build:
+      context: ./
+      dockerfile: Dockerfile.jdk8
+    environment:
+      - "SERVICE_TAGS=service"
+      - "JDK=jdk8"
+    networks:
+      - xxe-net
+
+  jdk7:
+    container_name: jdk7
+    build:
+      context: ./
+      dockerfile: Dockerfile.jdk7
+    environment:
+      - "SERVICE_TAGS=service"
+      - "JDK=jdk7"
+    networks:
+      - xxe-net
+
+  jdk8-build:
+    container_name: jdk8-build
+    build:
+      context: ./
+      dockerfile: Dockerfile.jdk8.build
+    environment:
+      - "SERVICE_TAGS=jdk8"
+      - "JDK=jdk8"
+    networks:
+      - xxe-net
+
+  jdk7-build:
+    container_name: jdk7-build
+    build:
+      context: ./
+      dockerfile: Dockerfile.jdk7.build
+    environment:
+      - "SERVICE_TAGS=jdk7"
+      - "JDK=jdk7"
+    networks:
+      - xxe-net
+
+  simpson-service-jre8:
+    container_name: simpson-service-jre8
+    build:
+      context: ./
+      dockerfile: Dockerfile.jre8.service
+    ports:
+      - 8088:8080
+    networks:
+      - xxe-net
+
+  simpson-service-jre7:
+    container_name: simpson-service-jre7
+    build:
+      context: ./
+      dockerfile: Dockerfile.jre7.service
+    ports:
+      - 8087:8080
+    networks:
+      - xxe-net
+
+networks:
+  xxe-net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 13.0.0.0/16

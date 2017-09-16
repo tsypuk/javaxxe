@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+
+  <body>
+  <div th:replace="layout :: navbar">(navbar)</div>
+
+  <div class="container">
+    <div class="starter-template">
+      <h1>Demo XXE vulnerability</h1>
+      <img src="images/skull.png" height="50%"/>
+        <h1>Java version: <span th:text="${java}">java</span></h1>
+    </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+    <p><span th:text="${currentTime}">(time)</span></p>
+  </footer>
+  </body>
+</html>

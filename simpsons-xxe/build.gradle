@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url 'http://repo.spring.io/libs-release' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'java-xxe'
+    version =  '0.1.0'
+}
+
+sourceCompatibility = 1.7
+//targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    maven { url "http://oss.sonatype.org/content/repositories/vaadin-snapshots/" }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+dependencies {
+//    runtime
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-devtools"
+    compile "org.webjars:bootstrap:$bootstrapVersion"
+    compile "org.webjars:jquery:$jqueryVersion"
+    compile "org.projectlombok:lombok:$lombokVersion"
+
+//    tests
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "com.jayway.jsonpath:json-path"
+    testCompile "junit:junit"
+
+}

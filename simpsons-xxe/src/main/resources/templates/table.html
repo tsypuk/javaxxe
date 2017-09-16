@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+
+  <body>
+  <div th:replace="layout :: navbar">(navbar)</div>
+
+  <div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <td>id</td>
+        <td>first name</td>
+        <td>last name</td>
+        <td>nick</td>
+        <td>salary</td>
+        <td>password</td>
+        <td>description</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${simpsons.empty}">
+        <td colspan="4">No tasks</td>
+      </tr>
+      <tr th:each="simpsom : ${simpsons}">
+        <td th:text="${simpsom.id}">1</td>
+        <td th:text="${simpsom.firstName}">1</td>
+        <td th:text="${simpsom.lastName}">1</td>
+        <td th:text="${simpsom.nickName}">1</td>
+        <td th:text="${simpsom.salary}">1</td>
+        <td th:text="${simpsom.password}">1</td>
+        <td th:text="${simpsom.about}">1</td>
+        <!--<td><a href="view.html" th:href="@{'/' + ${task}}" th:text="${task}">Title ...</a></td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="container-fluid text-center">
+      <p>Footer Text</p>
+  </footer>
+  </body>
+</html>
