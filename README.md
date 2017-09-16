@@ -11,8 +11,10 @@
 - [x] add more styling to bootstrap
 - [ ] create selenium automation test for hack action (all injections)
 - [ ] create docker image and container with fake DDT server based on lighthttp
+Use images like. https://github.com/spujadas/lighttpd-docker
+- [ ] move docker configs into separate folder
 - [x] create docker image for app with diff java version and artifact version
-- [ ] automate penetration testing with docker and testcontainers
+- [ ] automate penetration testing with docker and testcontainers(if needed)
 - [x] check to use openjdk or oracle versions for testing
 - [ ] update slides of presentation
 
