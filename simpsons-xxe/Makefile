@@ -35,6 +35,10 @@ package8: build_app_jdk8
 run8: package8
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build $(SERVICE_NAME)-${JRE8} \
 
+demo:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d $(SERVICE_NAME)-${JRE8}; \
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d $(SERVICE_NAME)-${JRE7} \
+
 # TODO refactor to parametrize
 build_jdk7:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build ${JDK7} \
