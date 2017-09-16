@@ -64,6 +64,20 @@ services:
       - 8087:8080
     networks:
       - xxe-net
+    environment:
+      - SECURED=false=false
+
+  simpson-service-jre7-secure:
+    container_name: simpson-service-jre7-unsecure
+    build:
+      context: ./
+      dockerfile: Dockerfile.jre7.service
+    ports:
+      - 8187:8080
+    networks:
+      - xxe-net
+    environment:
+      - SECURED=false=true
 
 networks:
   xxe-net:

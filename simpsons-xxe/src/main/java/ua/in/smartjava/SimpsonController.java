@@ -31,7 +31,8 @@ public class SimpsonController {
 	@RequestMapping("/about")
 	public String about(Model model) {
 	    model.addAttribute("author", "Tsypuk Roman");
-	    return "about";
+		model.addAttribute("simpsons", simpsonService.getSimpsons());
+		return "about";
     }
 
 	@RequestMapping("/table")

@@ -39,6 +39,12 @@ demo:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d $(SERVICE_NAME)-${JRE8}; \
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d $(SERVICE_NAME)-${JRE7} \
 
+unsecure:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d --build $(SERVICE_NAME)-${JRE7}-unsecure; \
+
+stop:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) stop \
+
 # TODO refactor to parametrize
 build_jdk7:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build ${JDK7} \

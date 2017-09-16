@@ -2,6 +2,7 @@ FROM openjdk:7-jre
 
 ADD java-xxe.jdk7.jar /opt/java-xxe.jdk7.jar
 
-EXPOSE 8080
+EXPOSE 8080 6001
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom -Xmx256m -Xms256m","-jar","/opt/java-xxe.jdk7.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom -Xmx256m -Xms256m -Djdk.xml.entityExpansionLimit=0","-jar","/opt/java-xxe.jdk7.jar"]
+# -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=6001 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=192.168.99.1 -Dcom.sun.management.jmxremote.rmi.port=6001",
