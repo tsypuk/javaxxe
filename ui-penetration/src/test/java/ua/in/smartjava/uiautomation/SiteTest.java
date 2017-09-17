@@ -53,7 +53,7 @@ public class SiteTest {
 
     //TODO Parametrize every method to call different containers.
     @Test
-//    @Ignore
+    @Ignore
     public void testCallWikipedia() throws InterruptedException {
         RemoteWebDriver driver = ((BrowserWebDriverContainer)chrome).getWebDriver();
         driver.get("https://wikipedia.org");
@@ -77,6 +77,7 @@ public class SiteTest {
 // Filesystem scan
 
     @Test
+    @Ignore
     public void testScanFS() throws InterruptedException {
         Thread.sleep(20000);
         RemoteWebDriver driver = ((BrowserWebDriverContainer)chrome).getWebDriver();

@@ -1,2 +1,2 @@
 rootProject.name = 'java-xxe'
-include ":simpsons-xxe", "ui-penetration"
+include ":simpsons-xxe", "library_xml" ,"ui-penetration"

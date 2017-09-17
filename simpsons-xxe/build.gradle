@@ -45,6 +45,7 @@ dependencies {
     compile "org.webjars:bootstrap:$bootstrapVersion"
     compile "org.webjars:jquery:$jqueryVersion"
     compile "org.projectlombok:lombok:$lombokVersion"
+    compile project(":library_xml")
 
 //    tests
     testCompile "org.springframework.boot:spring-boot-starter-test"
