@@ -1,5 +1,6 @@
 package ua.in.smartjava.uiautomation;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,7 @@ import static org.testcontainers.containers.BrowserWebDriverContainer.VncRecordi
 
 @Slf4j
 @RunWith(JUnit4.class)
+@Ignore
 public class SiteTest {
 
     @Rule
@@ -53,7 +55,6 @@ public class SiteTest {
 
     //TODO Parametrize every method to call different containers.
     @Test
-    @Ignore
     public void testCallWikipedia() throws InterruptedException {
         RemoteWebDriver driver = ((BrowserWebDriverContainer)chrome).getWebDriver();
         driver.get("https://wikipedia.org");
@@ -77,7 +78,6 @@ public class SiteTest {
 // Filesystem scan
 
     @Test
-    @Ignore
     public void testScanFS() throws InterruptedException {
         Thread.sleep(20000);
         RemoteWebDriver driver = ((BrowserWebDriverContainer)chrome).getWebDriver();
