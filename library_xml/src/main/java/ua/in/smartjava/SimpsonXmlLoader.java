@@ -74,32 +74,27 @@ public class SimpsonXmlLoader implements SimpsonLoader {
      * @param dbFactory the instance of DocumentBuilderFactory thats features will be set up.
      */
     private void secureDocumentBuilder(DocumentBuilderFactory dbFactory) throws ParserConfigurationException {
-
-/**
- * We do not allow external entities processing by setting up these flags:
- */
+        //  We do not allow external entities processing by setting up these flags:
         dbFactory.setFeature("http://xml.org/sax/features/external-general-entities", false);
         dbFactory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 
-/**
- * XML Entity Expansion Injection (XML Bomb)
- */
+        //  XML Entity Expansion Injection (XML Bomb)
         dbFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     }
 
+    /**
+     * [Fatal Error] :1:1: JAXP00010001:
+     * The parser has encountered more than "64000" entity expansions in this document;
+     * this is the limit imposed by the JDK (jdk8). To emulate jdk7 or earlier we use:
+     * -Xms64m -Xmx2048m -Djdk.xml.entityExpansionLimit=0
+     *
+     * We need TURN ON this feature to emulate previous version java where
+     * [Fatal Error] :1:8: JAXP00010004:
+     * The accumulated size of entities is "50,000,006" that exceeded the "50,000,000" limit set by
+     * "FEATURE_SECURE_PROCESSING".
+     * https://blogs.oracle.com/joew/entry/jdk_7u45_aws_issue_123
+     */
     private void increaseAccumulatedSize(DocumentBuilderFactory dbFactory) throws ParserConfigurationException {
-        /**
-         * [Fatal Error] :1:1: JAXP00010001:
-         * The parser has encountered more than "64000" entity expansions in this document;
-         * this is the limit imposed by the JDK (jdk8). To emulate jdk7 or earlier we use:
-         * -Xms64m -Xmx2048m -Djdk.xml.entityExpansionLimit=0
-         *
-         * We need TURN ON this feature to emulate previous version java where
-         * [Fatal Error] :1:8: JAXP00010004:
-         * The accumulated size of entities is "50,000,006" that exceeded the "50,000,000" limit set by
-         * "FEATURE_SECURE_PROCESSING".
-         * https://blogs.oracle.com/joew/entry/jdk_7u45_aws_issue_123
-         */
         dbFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, false);
     }
 }
