@@ -27,7 +27,7 @@ build_jdk8:
 
 build_app_jdk8: build_jdk8
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build ${JDK8}-build; \
-	docker cp ${JDK8}-build:/home/gradle/service/build/libs/$(ORIGIN_JAR_FILE) $(SERVICE_JAR_FILE).${JDK8}.jar
+	docker cp ${JDK8}-build:/home/gradle/service/simpsons-xxe/build/libs/$(ORIGIN_JAR_FILE) $(SERVICE_JAR_FILE).${JDK8}.jar
 
 package8: build_app_jdk8
 	docker build --file $(DOCKER_FILE8) --tag $(SERVICE_NAME).${JRE8}:$(VERSION) --tag $(SERVICE_NAME).${JRE8}:latest . \
@@ -51,7 +51,7 @@ build_jdk7:
 
 build_app_jdk7: build_jdk7
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build ${JDK7}-build; \
-	docker cp ${JDK7}-build:/home/gradle/service/build/libs/$(ORIGIN_JAR_FILE) $(SERVICE_JAR_FILE).${JDK7}.jar
+	docker cp ${JDK7}-build:/home/gradle/service/simpsons-xxe/build/libs/$(ORIGIN_JAR_FILE) $(SERVICE_JAR_FILE).${JDK7}.jar
 
 package7: build_app_jdk7
 	docker build --file $(DOCKER_FILE7) --tag $(SERVICE_NAME).${JRE7}:$(VERSION) --tag $(SERVICE_NAME).${JRE7}:latest . \

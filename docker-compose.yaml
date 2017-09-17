@@ -6,9 +6,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.jdk8
-    environment:
-      - "SERVICE_TAGS=service"
-      - "JDK=jdk8"
     networks:
       - xxe-net
 
@@ -17,9 +14,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.jdk7
-    environment:
-      - "SERVICE_TAGS=service"
-      - "JDK=jdk7"
     networks:
       - xxe-net
 
@@ -28,9 +22,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.jdk8.build
-    environment:
-      - "SERVICE_TAGS=jdk8"
-      - "JDK=jdk8"
     networks:
       - xxe-net
 
@@ -39,9 +30,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.jdk7.build
-    environment:
-      - "SERVICE_TAGS=jdk7"
-      - "JDK=jdk7"
     networks:
       - xxe-net
 
@@ -57,6 +45,18 @@ services:
     environment:
       - SECURED=false
 
+  simpson-service-jre8-secure:
+    container_name: simpson-service-jre8-secure
+    build:
+      context: ./
+      dockerfile: Dockerfile.jre8.service
+    ports:
+      - 8888:8080
+    networks:
+      - xxe-net
+    environment:
+      - SECURED=true
+
   simpson-service-jre7:
     container_name: simpson-service-jre7
     build:
@@ -70,12 +70,12 @@ services:
       - SECURED=false
 
   simpson-service-jre7-secure:
-    container_name: simpson-service-jre7-unsecure
+    container_name: simpson-service-jre7-secure
     build:
       context: ./
       dockerfile: Dockerfile.jre7.service
     ports:
-      - 8187:8080
+      - 8887:8080
     networks:
       - xxe-net
     environment:
