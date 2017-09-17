@@ -3,8 +3,8 @@ FROM xxe_jdk7:latest
 
 WORKDIR /home/gradle/service
 
-COPY simpsons-xxe simpsons-xxe
-COPY library_xml library_xml
+COPY simpson-app simpson-app
+COPY simpson-loader simpson-loader
 ADD settings.gradle settings.gradle
 
 USER root

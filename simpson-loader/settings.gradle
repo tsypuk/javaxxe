@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'library_xml'
+rootProject.name = 'simpson-loader'
