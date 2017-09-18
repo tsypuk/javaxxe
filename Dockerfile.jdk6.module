@@ -1,4 +1,4 @@
-FROM openjdk:7-jdk
+FROM openjdk:6-jdk
 
 WORKDIR /home/gradle/service
 
