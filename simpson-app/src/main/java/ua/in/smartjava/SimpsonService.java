@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SimpsonService {
 
-    @Value("${secured}")
+    @Value("${secured-:false}")
     private boolean secured;
 
     private List<Simpson> simpsons = new ArrayList<>();

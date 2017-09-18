@@ -66,6 +66,7 @@ public class SimpsonXmlLoader implements SimpsonLoader {
                 }
             }
         } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
         }
         return simpsons;
     }
