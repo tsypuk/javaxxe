@@ -1,0 +1,14 @@
+FROM openjdk:7-jdk-alpine
+
+WORKDIR /home/gradle/service
+
+ADD simpson-loader/build.gradle build.gradle
+ADD simpson-loader/settings.gradle settings.gradle
+ADD simpson-loader/gradle.properties gradle.properties
+ADD simpson-loader/gradlew gradlew
+
+COPY simpson-loader/gradle gradle
+COPY simpson-loader/src src
+
+RUN ./gradlew build
+

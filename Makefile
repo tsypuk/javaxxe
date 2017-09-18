@@ -58,3 +58,6 @@ package7: build_app_jdk7
 
 run7: package7
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build $(SERVICE_NAME)-${JRE7} \
+
+module7:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build jdk7-module \
