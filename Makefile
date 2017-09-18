@@ -59,6 +59,7 @@ package7: build_app_jdk7
 run7: package7
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build $(SERVICE_NAME)-${JRE7} \
 
+# testing of simpson-loader module on different jdks
 module8:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build jdk8-module \
 
