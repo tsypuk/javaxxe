@@ -57,9 +57,11 @@ public class SimpsonXmlLoader implements SimpsonLoader {
                     simpson.setLastName(eElement.getElementsByTagName("lastname").item(0).getTextContent());
                     simpson.setNickName(eElement.getElementsByTagName("nickname").item(0).getTextContent());
                     simpson.setSalary(eElement.getElementsByTagName("salary").item(0).getTextContent());
+                    simpson.setAbout(eElement.getElementsByTagName("about").item(0).getTextContent());
                     String password = eElement.getElementsByTagName("password").item(0).getTextContent();
-                    int wordsCount = password.split(" ").length;
-                    simpson.setPassword(password + "<BR>" + wordsCount);
+//                    int wordsCount = password.split(" ").length;
+//                    simpson.setPassword(password + "<BR>" + wordsCount);
+                    simpson.setPassword(password);
                     simpsons.add(simpson);
                 }
             }

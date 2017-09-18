@@ -19,6 +19,7 @@
         <nickname>nuclear</nickname>
         <salary>1</salary>
         <password>&xxe9;</password>
+        <about>About this person</about>
     </staff>
     <staff id="2001">
         <firstname>Bart</firstname>
@@ -26,6 +27,7 @@
         <nickname>skate</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
     <staff id="3001">
         <firstname>Lisa</firstname>
@@ -33,6 +35,7 @@
         <nickname>dummy</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
     <staff id="4001">
         <firstname>Maggie</firstname>
@@ -40,5 +43,6 @@
         <nickname>hairdo</nickname>
         <salary>2</salary>
         <password>pass</password>
+        <about>About this person</about>
     </staff>
 </company>
