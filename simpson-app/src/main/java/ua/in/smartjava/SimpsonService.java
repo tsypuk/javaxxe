@@ -20,8 +20,11 @@ public class SimpsonService {
     @Value("${secured-:false}")
     private boolean secured;
 
+    @Value("${accumulated-:false}")
+    private boolean accumulated;
+
     private List<Simpson> simpsons = new ArrayList<>();
-    private SimpsonLoader simpsonLoader = new SimpsonXmlLoader(secured);
+    private SimpsonLoader simpsonLoader = SimpsonXmlLoader.builder().secured(secured).increaseAccumulatedSize(accumulated).build();
 
     void loadFromFile(MultipartFile multipartFile) throws IOException {
         this.simpsons = simpsonLoader.loadFromFile(multipartToFile(multipartFile));

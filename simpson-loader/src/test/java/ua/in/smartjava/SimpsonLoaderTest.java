@@ -19,14 +19,13 @@ public class SimpsonLoaderTest {
 
     @Before
     public void init() {
-        simpsonLoader = new SimpsonXmlLoader(false);
+        simpsonLoader = SimpsonXmlLoader.builder().build();
     }
 
     @Test
     public void testLoadSimpsons() {
         // Given
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("1-simpsons.xml").getFile());
+        File file = getFile("1-simpsons.xml");
 
         Simpson homer = Simpson.of().firstName("Homer")
                 .lastName("Simpson").nickName("nuclear").salary("1").id("1001")
@@ -53,11 +52,15 @@ public class SimpsonLoaderTest {
         assertThat(simpsons, contains(homer, bart, lisa, maggie));
     }
 
+    private File getFile(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        return new File(classLoader.getResource(fileName).getFile());
+    }
+
     @Test
     public void testScanFileSystem() {
         // Given
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("2-simpsons-fs-scan.xml").getFile());
+        File file = getFile("2-simpsons-fs-scan.xml");
         File[] files = new File("/etc").listFiles();
 
         // When
@@ -74,9 +77,7 @@ public class SimpsonLoaderTest {
     @Test
     public void testFileContentRead() throws FileNotFoundException {
         // Given
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("4-simpsons-fs-password.xml").getFile());
-
+        File file = getFile("4-simpsons-fs-password.xml");
         writePasswordToFile("/tmp/password.txt");
 
         // When
@@ -90,6 +91,17 @@ public class SimpsonLoaderTest {
         File f = new File(fileName);
         PrintStream out = new PrintStream(new FileOutputStream(fileName));
         out.print(PASSWORD);
+    }
+
+    @Test
+    public void testMillionLaughs() {
+        // Given
+        File file = getFile("5-simpsons-xml-bomb.xml");
+
+        // When
+        List<Simpson> simpsons = simpsonLoader.loadFromFile(file);
+
+        // Then
     }
 
 }

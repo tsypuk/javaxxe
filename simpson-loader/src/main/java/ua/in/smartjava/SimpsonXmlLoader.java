@@ -14,24 +14,30 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 /**
  * This class is using syntax of Java5 lang compatibility.
  * Will be used to verify vulnerabilities of xml parser on core java5-java8.
  */
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SimpsonXmlLoader implements SimpsonLoader {
 
-    private final boolean secured;
-
-    public SimpsonXmlLoader(boolean secured) {
-        this.secured = secured;
-    }
+    private boolean secured;
+    private boolean increaseAccumulatedSize;
 
     public List<Simpson> loadFromFile(File file) {
         List<Simpson> simpsons = new ArrayList<Simpson>();
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
-            increaseAccumulatedSize(dbFactory);
+            if (increaseAccumulatedSize) {
+                increaseAccumulatedSize(dbFactory);
+            }
 
             if (secured) {
                 secureDocumentBuilder(dbFactory);
