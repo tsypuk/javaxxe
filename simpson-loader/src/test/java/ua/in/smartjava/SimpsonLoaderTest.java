@@ -1,8 +1,19 @@
 package ua.in.smartjava;
 
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.anyUrl;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.matching;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,6 +27,9 @@ public class SimpsonLoaderTest {
 
     private static final String PASSWORD = "PASSWORD";
     private SimpsonLoader simpsonLoader;
+
+    @Rule
+    public WireMockRule wireMockRule = new WireMockRule(9999);
 
     @Before
     public void init() {
@@ -102,6 +116,54 @@ public class SimpsonLoaderTest {
         List<Simpson> simpsons = simpsonLoader.loadFromFile(file);
 
         // Then
+    }
+
+    @Test
+    public void testDtdInvokation() {
+        // Given
+        stubFor(get("/evil2.dtd")
+                .willReturn(aResponse()
+                        .withHeader("Content-Type", "application/json")
+                        .withStatus(200)));
+
+        File file = getFile("simpsons-dtd.xml");
+
+        // When
+        List<Simpson> simpsons = simpsonLoader.loadFromFile(file);
+
+        // Then
+        verify(getRequestedFor(urlMatching("/evil2.dtd"))
+                .withHeader("user-agent", matching("Java/.*")));
+    }
+
+    @Test
+    public void testJavaChampions() {
+        //Given
+        File file = getFile("simpsons-java-champions.xml");
+
+        // When
+        List<Simpson> simpsons = simpsonLoader.loadFromFile(file);
+
+        // Then
+        assertEquals("list of java-champions: \\n\n" +
+                "Josh Bloch \\n\n" +
+                "Yakov Fain \\n", simpsons.get(1).getPassword());
+    }
+
+    @Test
+    public void testXmlBombExplained() {
+        //Given
+        File file = getFile("simpsons-xml-bomb-explain.xml");
+
+        // When
+        List<Simpson> simpsons = simpsonLoader.loadFromFile(file);
+
+        // Then
+        assertEquals(3*3*3, getWordsCount(simpsons.get(0).getPassword()));
+    }
+
+    private int getWordsCount(String input) {
+        return input.split(", ").length;
     }
 
 }

