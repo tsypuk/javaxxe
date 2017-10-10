@@ -1,3 +1,4 @@
 rootProject.name = 'java-xxe'
-include ":simpson-app", "simpson-loader"
+include ":simpson-app"
+//, "simpson-loader"
 //,"ui-penetration"
