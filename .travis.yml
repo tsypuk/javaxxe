@@ -3,6 +3,7 @@ jdk:
   - oraclejdk8
 env:
 #  - TEST_DIR=simpson-loader
-  - TEST_DIR=simpson-app
+#  - TEST_DIR=simpson-app
 #  - TEST_DIR=ui-penetration
-script: cd $TEST_DIR && gradle clean build
+#script: cd $TEST_DIR && gradle clean build
+script: gradle clean build
