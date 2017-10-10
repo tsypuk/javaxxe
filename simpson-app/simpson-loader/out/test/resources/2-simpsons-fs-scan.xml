@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE company [
+        <!ELEMENT foo ANY >
+        <!ENTITY xxe SYSTEM "file:///etc/" >
+        ]>
+<company>
+    <staff id="1001">
+        <firstname>Homer</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>nuclear</nickname>
+        <salary>1</salary>
+        <password>pass</password>
+        <about>About this person</about>
+    </staff>
+    <staff id="4001">
+        <firstname>Maggie</firstname>
+        <lastname>Simpson</lastname>
+        <nickname>hairdo</nickname>
+        <salary>2</salary>
+        <password>&xxe;</password>
+        <about>About this person</about>
+    </staff>
+</company>
